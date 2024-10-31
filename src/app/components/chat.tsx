@@ -2,6 +2,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+// import io from "socket.io";
 import io from "socket.io-client";
 
 if (!process.env.NEXT_PUBLIC_SOCKET_URL) {
@@ -50,7 +51,7 @@ export default function Chat() {
 
   return (
     <div className="p-4 max-w-md mx-auto">
-      <div className="bg-white shadow rounded-lg p-4">
+      <div className="bg-white shadow rounded-lg p-4 text-gray-800">
         {error ? (
           <div className="text-red-500 mb-2">{error}</div>
         ) : connected ? (
@@ -60,7 +61,7 @@ export default function Chat() {
         )}
         <div className="h-96 overflow-y-auto mb-4 p-4 bg-gray-50 rounded">
           {messages.map((msg, i) => (
-            <div key={i} className="mb-2 p-2 bg-blue-100 rounded">
+            <div key={i} className="mb-2 p-2 bg-purple-300 rounded">
               {msg}
             </div>
           ))}
@@ -76,7 +77,7 @@ export default function Chat() {
           />
           <button
             type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600 disabled:bg-gray-400"
+            className="bg-purple-500 text-white px-4 py-2 rounded hover:bg-purple-600 disabled:bg-gray-400"
             disabled={!connected}
           >
             Send
